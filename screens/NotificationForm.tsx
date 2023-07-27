@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { Picker } from '@react-native-picker/picker';
+import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import {
   StyleSheet,
@@ -11,6 +12,7 @@ import {
 
 function NotificationFrom(): JSX.Element {
   const [selectedCategory, setSelectedCategory] = useState('');
+  const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
@@ -30,7 +32,9 @@ function NotificationFrom(): JSX.Element {
         <TextInput style={styles.message} />
       </View>
       <View style={styles.buttonRow}>
-        <TouchableOpacity style={styles.notifiactionButton}>
+        <TouchableOpacity style={styles.notifiactionButton} onPress={()=>{
+          navigation.navigate("Notifications Sent");
+        }}>
           <Text style={styles.notifcationText}>Notifcations</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.submitButtom}>
